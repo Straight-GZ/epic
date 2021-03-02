@@ -1,19 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {NavLink} from 'react-router-dom'
 import LogoUrl from './logo.svg'
 import styled from 'styled-components'
+import {Button} from 'antd'
 
 const Header = styled.header`
   display: flex;
   align-items: center;
   padding: 10px 100px;
   background: #02101f;
+  color: #fff;
 `
 const Logo = styled.img`
   height: 30px;
 `
 const StyledLink = styled(NavLink)`
-  color: #fff;
   margin-left: 30px;
 
   &.active {
@@ -23,11 +24,13 @@ const StyledLink = styled(NavLink)`
 const Login = styled.div`
   margin-left: auto;
 `
-const Button = styled.button`
+const StyledButton = styled(Button)`
   margin-left: 10px;
 `
 
-function component() {
+function Component() {
+	const [isLogin, setIsLogin] = useState(false)
+	
 	return (
 		<Header>
 			<Logo src = {LogoUrl} alt = ""/>
@@ -37,11 +40,19 @@ function component() {
 				<StyledLink to = '/about'>关于我</StyledLink>
 			</nav>
 			<Login>
-				<Button>登录</Button>
-				<Button>注册</Button>
+				{
+					isLogin ? <>
+						gz
+						<StyledButton type = "primary" onClick = {() => setIsLogin(false)}>注销</StyledButton>
+					</> : <>
+						<StyledButton type = "primary" onClick = {() => setIsLogin(true)}>登录</StyledButton>
+						<StyledButton type = "primary">注册</StyledButton>
+					</>
+				}
+			
 			</Login>
 		</Header>
 	)
 }
 
-export default component
+export default Component

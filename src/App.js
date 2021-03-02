@@ -1,5 +1,6 @@
 import {Suspense, lazy} from 'react'
 import './App.css'
+import 'antd/dist/antd.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import {Switch, Route} from 'react-router-dom'

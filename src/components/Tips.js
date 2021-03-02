@@ -13,9 +13,9 @@ const Tips = styled.div`
 const Component = observer(({children}) => {
 	const {UserStore} = useStores()
 	return (
-		<Tips>
-			{UserStore.currentUser ? null : <div>{children}</div>}
-		</Tips>
+		<>
+			{UserStore.currentUser ? null : <Tips>{children}</Tips>}
+		</>
 	)
 })
 export default Component

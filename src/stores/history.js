@@ -30,6 +30,13 @@ class HistoryStore {
 			.catch(error => message.error('数据加载失败'))
 			.finally(() => this.hasMore = false)
 	}
+	
+	@action reset() {
+		this.list = []
+		this.isLoading = false
+		this.hasMore = true
+		this.page = 0
+	}
 }
 
 

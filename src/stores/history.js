@@ -1,6 +1,6 @@
-import {observable, action} from 'mobx'
+import {observable, action, makeObservable} from 'mobx'
 import {message} from 'antd'
-import Uploader from '../components/Uploader'
+import {Uploader} from '../models'
 
 class HistoryStore {
 	@observable list = []
@@ -8,12 +8,13 @@ class HistoryStore {
 	@observable hasMore = true
 	@observable page = 0
 	limit = 10
-	export
-	default
-	new
+	
+	constructor() {
+		makeObservable(this)
+	}
 	
 	@action append(newList) {
-		this.list.concat(newList)
+		this.list = this.list.concat(newList)
 	}
 	
 	@action find() {
@@ -30,5 +31,6 @@ class HistoryStore {
 			.finally(() => this.hasMore = false)
 	}
 }
+
 
 export default new HistoryStore()
